@@ -1,51 +1,53 @@
+function youLose(){
+  if (yourScore < -10) {
+    $('div').remove();
+    $('h3').empty();
+    $('h3').text("Sorry, you lost.");
+    var newButton = $('<button>')
+    newButton.text('PLAY AGAIN');
+    $('body').append(newButton);
+  };
+}
 
+function failSuccessMessage(){
+  if ($("div").index(this) == randomGeneratedNumber){
+    $('h3').text('That is right! Your color was ' + colorArray[randomGeneratedNumber] + '!');
+    yourScore += 2;
+    $(this).css("background-color", "lime");
+    setTimeout(function(){
+      $('div:nth-of-type(' + (randomGeneratedNumber + 1) + ')').css("background-color", colorArray[randomGeneratedNumber]);
+      randomGeneratedNumber = randomNumber(0, colorArray.length - 1);
+    }, 1500)
+    //your right click another color to play again
+
+  } else {
+    $('h3').text('Nope! That\'s not the right color. Try again.');
+    yourScore -= 1;
+  }
+}
 //Randomly generated number function
 function randomNumber(min, max){
   var randomNumberReturn = Math.floor(Math.random() * (1 + max - min) + min);
   return randomNumberReturn;
 }
-//Color Array
-var colorArray = ['hotpink', 'deepskyblue', 'darkcyan', 'tan', 'coral', ];
-var randomGeneratedNumber = randomNumber(0, colorArray.length - 1);
-
-$(document).ready(function(){
-
+//appends a div based on array color
+function addingColorDivs(){
   for (var i = 0; i < colorArray.length; i++) {
     $('body').append('<div id = \'' + colorArray[i] + '\'></div>');
     $('#' + colorArray[i]).css({"background-color":colorArray[i], "float":"left" , "width":"150px", "height":"150px", "margin":"10px"});
   }
+}
+//Color Array
+var colorArray = ['hotpink', 'deepskyblue', 'darkcyan', 'tan', 'coral', ];
+var randomGeneratedNumber = randomNumber(0, colorArray.length - 1);
+var yourScore = 0;
 
-  var yourScore = 0;
-
+$(document).ready(function(){
+  addingColorDivs();
   $('div').on('click', function(){
-    // console.log($("div").index(this));
-    //$(div).this().index(); ????
-    if ($("div").index(this) == randomGeneratedNumber){
-      $('h3').text('That is right! Your color was ' + colorArray[randomGeneratedNumber] + '!');
-      yourScore += 2;
-      $(this).css("background-color", "lime");
-      setTimeout(function(){
-        $('div:nth-of-type(' + (randomGeneratedNumber + 1) + ')').css("background-color", colorArray[randomGeneratedNumber]);
-        randomGeneratedNumber = randomNumber(0, colorArray.length - 1);
-      }, 1500)
-      //your right click another color to play again
-
-    } else {
-      $('h3').text('Nope! That\'s not the right color. Try again.');
-      yourScore -= 1;
-    }
-
+    failSuccessMessage();
     $('h2').text("Your Score Is: " + yourScore);
-
-    if (yourScore < -10) {
-      $('div').remove();
-      $('h3').empty();
-      $('h3').text("Sorry, you lost.");
-      var newButton = $('<button>')
-      newButton.text('PLAY AGAIN');
-      $('body').append(newButton);
-    };
-
+    youLose();
   });
 
   //restart game
