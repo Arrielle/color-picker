@@ -1,19 +1,40 @@
 $(document).ready(function(){
   //appends my color blocks
 
-  var colorArray = ['pink', 'blue', 'green', 'tan', 'orange'];
+  var colorArray = ['hotpink', 'deepskyblue', 'darkcyan', 'tan', 'coral', ];
+
+  function randomNumber(min, max){
+      var randomNumberReturn = Math.floor(Math.random() * (1 + max - min) + min);
+      return randomNumberReturn;
+  }
+  //checking to see if/how function is run
+
+  var randomGeneratedNumber = randomNumber(0, colorArray.length - 1);
+    console.log(randomGeneratedNumber);
 
   for (var i = 0; i < colorArray.length; i++) {
     $('body').append('<div id = \'' + colorArray[i] + '\'></div>');
-    $('#' + colorArray[i]).css({"background-color":colorArray[i], "float":"left" , "width":"150px", "heigh":"150px" });
+    $('#' + colorArray[i]).css({"background-color":colorArray[i], "float":"left" , "width":"150px", "height":"150px", "margin":"10px"});
   }
 
-  // var pink = $('body').append('<div id = "pink"><h1>PINK COLOR BLOCK</h1></div>');
-  // var blue = $('body').append('<div id = "blue"><h1>BLUE COLOR BLOCK</h1></div>');
-  // var green = $('body').append('<div id = "block" class = "green"><h1>GREEN COLOR BLOCK</h1></div>');
-  // var tan = $('body').append('<div id = "block" class = "tan"><h1>TAN COLOR BLOCK</h1></div>');
-  // var orange = $('body').append('<div id = "block" class = "orange"><h1>ORANGE COLOR BLOCK</h1></div>');
+  $('div').on('click', function(){
 
+      console.log($("div").index(this));
+      //$(div).this().index(); ????
+      if ($("div").index(this) == randomGeneratedNumber){
+        $('h3').text('That is right! Your color was ' + colorArray[randomGeneratedNumber] + '!');
+        $(this).css("background-color", "yellow");
+        setTimeout(function(){
+          $('div:nth-of-type(' + (randomGeneratedNumber + 1) + ')').css("background-color", colorArray[randomGeneratedNumber]);
+          randomGeneratedNumber = randomNumber(0, colorArray.length - 1);
+        }, 2000)
+        //your right click another color to play again
+
+      } else {
+        $('h3').text('Nope! That is not the right color. Try again.');
+      }
+
+  });//ends onclick function
   // var colorArray = ['pink', 'blue', 'green', 'tan', 'orange'];
   //
   // for (var i = 0; i < array.length; i++) {

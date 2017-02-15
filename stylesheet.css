@@ -1,4 +1,4 @@
-#green {
+/*#green {
   float: left;
   width: 150px;
   height: 150px;
@@ -33,6 +33,7 @@
   border: none;
   background-color: #FF7B1B;
 }
+
 #pink {
   float: left;
   width: 150px;
@@ -40,4 +41,4 @@
   margin: 10px;
   border: none;
   background-color: #F52D8A;
-}
+}*/
