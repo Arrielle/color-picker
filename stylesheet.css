@@ -1,0 +1,43 @@
+#green {
+  float: left;
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+  border: none;
+  background-color: #068C8D;
+}
+
+#blue {
+  float: left;
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+  border: none;
+  background-color: #38C0F6;
+}
+
+#tan {
+  float: left;
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+  border: none;
+  background-color: #FFE9CA;
+}
+
+#orange {
+  float: left;
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+  border: none;
+  background-color: #FF7B1B;
+}
+#pink {
+  float: left;
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+  border: none;
+  background-color: #F52D8A;
+}
