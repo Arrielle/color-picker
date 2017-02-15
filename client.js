@@ -1,16 +1,14 @@
+
+//Randomly generated number function
+function randomNumber(min, max){
+  var randomNumberReturn = Math.floor(Math.random() * (1 + max - min) + min);
+  return randomNumberReturn;
+}
+//Color Array
+var colorArray = ['hotpink', 'deepskyblue', 'darkcyan', 'tan', 'coral', ];
+var randomGeneratedNumber = randomNumber(0, colorArray.length - 1);
+
 $(document).ready(function(){
-  //appends my color blocks
-
-  var colorArray = ['hotpink', 'deepskyblue', 'darkcyan', 'tan', 'coral', ];
-
-  function randomNumber(min, max){
-    var randomNumberReturn = Math.floor(Math.random() * (1 + max - min) + min);
-    return randomNumberReturn;
-  }
-  //checking to see if/how function is run
-
-  var randomGeneratedNumber = randomNumber(0, colorArray.length - 1);
-  console.log(randomGeneratedNumber);
 
   for (var i = 0; i < colorArray.length; i++) {
     $('body').append('<div id = \'' + colorArray[i] + '\'></div>');
